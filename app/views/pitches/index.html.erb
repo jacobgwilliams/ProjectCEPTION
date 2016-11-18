@@ -3,7 +3,9 @@
 <h2> Current Project Pitches: </h2>
 <ul>
 <% @pitches.each do |pitch| %>
-<li><%= pitch.title %></li>
+<li><%= link_to pitch.title, pitch_path(pitch.id) %></li>
 <% end %>
 </ul>
-
+<br>
+<br>
+<%= link_to 'Add New Pitch', new_pitch_path %>
