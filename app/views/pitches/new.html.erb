@@ -1,0 +1,27 @@
+<h2> Add New Pitch: </h2>
+
+<%= form_for :pitch, url: {action: "create"} do |f| %>
+
+  <% if @pitch.errors.any? %>
+      <ul>
+        <% @pitch.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
