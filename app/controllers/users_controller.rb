@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    debugger
     if @user.save && key_validation
       redirect_to '/'
     else
@@ -26,12 +25,14 @@ class UsersController < ApplicationController
         if params[:key] == SecretKey.first.admin_key
           true
         else
+          @user.errors.add(:key, "Invalid")
           false
         end
       else
         if params[:key] == SecretKey.first.user_key
           true
         else
+          @user.errors.add(:key, "Invalid")
           false
         end
       end
