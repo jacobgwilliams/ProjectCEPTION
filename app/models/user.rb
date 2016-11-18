@@ -3,9 +3,6 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }, presence: true
   validates :password, length: { minimum: 8, maximum: 100 }
-  validates_each :pitches do |user, attr, value|
-    user.errors.add attr, 'you have already too much pitches for user' if user.pitches.size >= 4
-  end
 
   has_many :pitches, { foreign_key: :student_id }
   has_many :votes, { foreign_key: :student_id }
@@ -14,5 +11,6 @@ class User < ApplicationRecord
   has_one :final_project, { through: :final_group, source: :pitch }
   has_many :round_one_picks, { through: :votes, source: :pitch }
   has_many :round_two_picks, { through: :pitch_rankings, source: :pitch }
+
 
 end

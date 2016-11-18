@@ -3,7 +3,7 @@ class CreatePitches < ActiveRecord::Migration[5.0]
     create_table :pitches do |t|
       t.string :title, null: false
       t.string :body, null: false
-      t.boolean :advancing, null: false
+      t.boolean :advancing, default: false
       t.references :student, null: false
 
       t.timestamps(null: false)

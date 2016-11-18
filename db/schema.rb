@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 20161118171129) do
   end
 
   create_table "pitches", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.string   "body",       null: false
-    t.boolean  "advancing",  null: false
-    t.integer  "student_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",                      null: false
+    t.string   "body",                       null: false
+    t.boolean  "advancing",  default: false
+    t.integer  "student_id",                 null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["student_id"], name: "index_pitches_on_student_id", using: :btree
   end
 
