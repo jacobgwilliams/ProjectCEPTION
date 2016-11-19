@@ -19,7 +19,12 @@
      margin: 0;
      padding: 0;
  }
- li {
+ nav li {
      display: inline;
      width: 60px;
  }
+
+.error_message {
+  color: red;
+  font-size: 72px;
+}
