@@ -2,7 +2,11 @@ class PitchesController < ApplicationController
 
   def index
     require_login
-    @pitches = Pitch.all
+    if is_admin?
+      @pitches = Pitch.joins(:votes).group("pitches.id").order("count(votes.id) desc")
+    else
+      @pitches = Pitch.all
+    end
   end
 
   def new

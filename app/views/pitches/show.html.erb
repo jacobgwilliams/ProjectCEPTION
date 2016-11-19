@@ -1,3 +1,18 @@
 <h2><%= @pitch.title %></h2>
-<br>
+<% if logged_in? && is_admin?%>
+<p>Student: <%= @pitch.student.name%></p>
+<p>Current vote count: <%= @pitch.votes.count %></p>
+<% end %>
 <p><%= @pitch.body %> </p>
+
+<% if logged_in? && is_admin?%>
+<button>No voting for you, admin</button>
+<% elsif !has_already_voted?(@pitch)%>
+  <%= form_for :vote, url: pitch_votes_path(@pitch) do |f| %>
+    <p>
+      <%= f.submit "Vote for this pitch!" %>
+    </p>
+  <% end %>
+  <% else %>
+  <button>You already voted for this one!</button>
+<% end %>
