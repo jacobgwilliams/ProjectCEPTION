@@ -7,8 +7,13 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      flash[:notice] = "Welcome, #{current_user.name}!"
-      redirect_to '/'
+      if is_admin?
+        flash[:notice] = "Welcome, admin #{current_user.name}!"
+        redirect_to "/users/#{@user.id}"
+      else
+        flash[:notice] = "Welcome, student #{current_user.name}!"
+        redirect_to '/'
+      end
     else
       @error="Incorrect email/password combination."
       render 'new'
