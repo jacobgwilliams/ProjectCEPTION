@@ -31,6 +31,24 @@ class PitchesController < ApplicationController
     @pitch = Pitch.find_by(id: params[:id])
   end
 
+  def edit
+    @pitch = Pitch.find_by(id: params[:id])
+  end
+
+  def update
+    require_admin
+    if !round_two_maximum_met
+      @pitch = Pitch.find_by(id: params[:id])
+      @pitch.advancing = true
+      @pitch.save
+      flash[:notice] = "#{@pitch.title} has advanced to Round 2! May the odds be ever in their favor!"
+      redirect_to "/users/#{current_user.id}"
+    else
+      flash[:notice] = "Maximum number of pitches advanced."
+      redirect_to "/users/#{current_user.id}"
+    end
+  end
+
   private
     def pitch_params
       params.require(:pitch).permit(:title, :body)

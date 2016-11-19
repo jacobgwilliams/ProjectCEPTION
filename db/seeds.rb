@@ -19,6 +19,8 @@ User.all.each do |user|
   Vote.create!(student: user, pitch: Pitch.all[1])
 end
 
+SecretKey.create
+
 
 #
 #

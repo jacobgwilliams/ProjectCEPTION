@@ -12,4 +12,21 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to '/sessions/new' unless logged_in?
   end
+
+  def is_admin?
+    current_user.admin
+  end
+
+  def require_admin
+    if !is_admin?
+      flash[:notice] = "You do not have permission to view this page!"
+      redirect_to root_path
+    end
+  end
+
+  def round_two_maximum_met
+    if Pitch.where(advancing: true).count >= 5
+      return true
+    end
+  end
 end

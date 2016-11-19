@@ -21,4 +21,8 @@ class Pitch < ApplicationRecord
   #   end
   # end
 
+  def vote_count
+    self.votes.count
+  end
+
 end
