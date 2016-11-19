@@ -23,5 +23,10 @@ module ApplicationHelper
       return true
     end
   end
-  
+
+  def round_two?
+    !!round_two_maximum_met
+  end
+
+
 end
