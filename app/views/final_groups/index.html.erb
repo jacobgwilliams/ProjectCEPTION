@@ -1,0 +1,14 @@
+<h2> Final Groups : </h2>
+<% if @final_groups.empty? %>
+  <p> Final groups have not been chosen yet! Please remember to vote on pitches and come back when voting is closed! </p>
+<% else %>
+  <% @final_groups.each do |group| %>
+  <ul>
+    <li><%= group.pitch.title %></li>
+  </ul>
+  <% end %>
+<% end %>
+
+
+
+
