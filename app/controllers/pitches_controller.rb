@@ -10,7 +10,7 @@ class PitchesController < ApplicationController
 
     if round_two?
       # must include all pitches because pitches without votes will not show up
-      @pitches = Pitch.all
+      @pitches = Pitch.where(advancing: true)
       render 'round_two_index'
     end
 
