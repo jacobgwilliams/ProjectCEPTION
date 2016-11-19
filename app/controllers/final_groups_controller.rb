@@ -1,7 +1,7 @@
 class FinalGroupsController < ApplicationController
 
   def index
-    @final_groups = FinalGroup.select("pitch_id").group("pitch_id")
+    @final_groups = FinalGroup.select("pitch_id").distinct
   end
 
   def new
