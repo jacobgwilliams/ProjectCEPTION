@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :pitches, except: [:destroy] do
     resources :votes, only: [:create]
   end
+  resources :final_groups, except: [:edit, :update, :destroy]
   root 'pitches#index'
   post '/pitch_rankings' => 'pitch_rankings#create_ranking'
 end
