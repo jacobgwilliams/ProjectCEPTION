@@ -5,11 +5,14 @@
     <% if logged_in? && is_admin? %>
     <th>Student</th>
     <th>Vote Count</th>
+    <% elsif has_already_ranked_pitches? %>
+    <th>Your votes</th>
+    <th>Your rankings</th>
     <% else %>
     <th>Your votes</th>
     <% end %>
   </tr>
-  <% @pitches.where(advancing: true).each do |pitch| %>
+  <% @pitches.each do |pitch| %>
   <tr>
     <td><%= link_to pitch.title, pitch_path(pitch.id) %></td>
     <% if logged_in? && is_admin? %>
@@ -22,7 +25,30 @@
         <%= '' %>
         <% end %>
     </td>
+      <% if has_already_ranked_pitches? %>
+      <td>
+        <%= find_ranking(pitch) %>
+      </td>
+      <% end %>
     <% end %>
   </tr>
   <% end %>
 </table>
+
+<% if !is_admin? && !has_already_ranked_pitches? %>
+<br />
+<h2>Rank the pitches:</h2>
+  <%= form_tag("/pitch_rankings", method: "post") do %>
+    <% @pitches.each_with_index do |pitch, idx| %>
+      <%= label_tag(pitch.id.to_s.to_sym, pitch.title) %>
+      <select name=pitch_rankings[<%= pitch.id %>] >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select><br />
+    <% end %>
+    <%= submit_tag("Submit rankings") %>
+  <% end %>
+<% end %>

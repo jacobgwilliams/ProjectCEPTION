@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :votes, only: [:create]
   end
   root 'pitches#index'
+  post '/pitch_rankings' => 'pitch_rankings#create_ranking'
 end
