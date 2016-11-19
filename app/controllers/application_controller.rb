@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def round_two?
+    !!round_two_maximum_met
+  end
+
 end
