@@ -11,12 +11,18 @@
   <body>
     <h1>ProjectCEPTION</h1>
     <nav>
-      <li>Home</li>
-      <li>Register</li>
-      <li>Login</li>
-      <li>So-and-So's Dashboard</li>
-      <li>Logout</li>
+      <li><%= link_to("Home", root_path)%></li>
+        <% if logged_in? %>
+          <li><%=link_to("#{current_user.name}'s Dashboard", user_path(current_user.id))%></li>
+          <li><%= link_to "Logout", session_path(current_user), method: :delete%></li>
+        <% else %>
+          <li><%= link_to("Register", new_user_path)%></li>
+          <li><%= link_to("Login", new_session_path )%></li>
+        <% end %>
     </nav>
+    <% flash.each do |name, message| %>
+      <p><%= message %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

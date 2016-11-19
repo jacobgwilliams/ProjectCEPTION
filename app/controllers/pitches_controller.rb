@@ -1,15 +1,19 @@
 class PitchesController < ApplicationController
 
   def index
+    require_login
     @pitches = Pitch.all
   end
 
   def new
+    require_login
     @pitch = Pitch.new
   end
 
   def create
+    require_login
     @pitch = Pitch.new(pitch_params)
+    @pitch.student = current_user
     if current_user.pitches.length < 4
       if @pitch.save
         flash[:notice] = "Thank you for adding a new pitch! Don't forget to vote!"
