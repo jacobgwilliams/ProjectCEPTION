@@ -1,18 +1,8 @@
 <h2> Welcome to your dashboard, <%=@user.name %>! </h2>
 
-
-<h3> Current Pitches: </h3>
-<% @pitches.each do |pitch| %>
-  <ul>
-    <li><%= link_to pitch.title, pitch_path(pitch.id) %> by <%= pitch.student.name %> (Vote Count: <%= pitch.votes.count %>)</li>
-    <% if pitch.advancing %>
-      <p> Advancing to Round 2 </p>
-    <% else %>
-      <% if round_two_maximum_met %>
-        <p> Not chosen for Round 2 </p>
-      <% else %>
-        <strong><%= link_to 'Advance to Round 2', pitch_path(pitch), method: :put, data: { confirm: 'Are you sure you want to advance this project?' } %></strong>
-      <% end %>
-    <% end %>
-  </ul>
+<% if !round_two? %>
+  <%= render "round_1_show" %>
+<% else %>
+  <%= render "round_2_show" %>
 <% end %>
+

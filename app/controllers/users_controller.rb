@@ -15,7 +15,12 @@ class UsersController < ApplicationController
   def show
     require_admin
     @user = User.find_by(id: params[:id])
-    @pitches = Pitch.all.sort_by(&:vote_count).reverse
+    if round_two?
+      @pitches = Pitch.where(advancing: true)
+      # sort by rating aggregate (sp?) total
+    else
+      @pitches = Pitch.all.sort_by(&:vote_count).reverse
+    end
   end
 
   private

@@ -1,0 +1,6 @@
+<h3> Round 2 Pitches: </h3>
+<% @pitches.each do |pitch| %>
+  <ul>
+    <li><%= link_to pitch.title, pitch_path(pitch.id) %> by <%= pitch.student.name %> (Current Rating: )</li>
+  </ul>
+<% end %>
