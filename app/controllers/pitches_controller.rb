@@ -7,6 +7,13 @@ class PitchesController < ApplicationController
     else
       @pitches = Pitch.all
     end
+
+    if round_two?
+      # must include all pitches because pitches without votes will not show up
+      @pitches = Pitch.all
+      render 'round_two_index'
+    end
+
   end
 
   def new
