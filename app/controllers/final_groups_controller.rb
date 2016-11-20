@@ -8,6 +8,7 @@ class FinalGroupsController < ApplicationController
     require_login
     require_admin
     final_group_protection #will currently redirect admin to '/' if the pitch has already been made into a final group
+    final_project_cap_redirect
     @final_group = FinalGroup.new(pitch_id: params[:pitch_id])
     @students = final_group_selection_listing
   end
@@ -47,4 +48,11 @@ class FinalGroupsController < ApplicationController
     users = users.delete_if {|user| leaders_already.include?(user) }
   end
 
+  def final_project_cap_met
+    Pitch.all.find_all(&:final_group).count >= 3
+  end
+
+  def final_project_cap_redirect
+    redirect_to final_groups_path if final_project_cap_met
+  end
 end
