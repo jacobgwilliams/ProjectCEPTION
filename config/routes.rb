@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:create, :new, :show]
+  resources :secret_keys, only: [:create, :new]
   resources :sessions, only: [:new, :create, :destroy]
   resources :final_groups, only: [:index]
   resources :pitches, except: [:destroy] do

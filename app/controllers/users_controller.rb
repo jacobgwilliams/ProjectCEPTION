@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    require_not_logged_in
     @user = User.new
   end
 
