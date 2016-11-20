@@ -1,10 +1,12 @@
-<h2> Pick a Final Project: </h2>
+<h2> Team Selection </h2>
 <h3>Project Name: <%= @final_group.pitch.title %></h3>
 <br>
 <h3> Select Members: </h3>
 
 <%= form_tag(pitch_create_groups_path(@final_group.pitch), method: "post") do %>
-  <input type="checkbox" name="leader" value="<%= @final_group.pitch.student.name %>" checked> <%= @final_group.pitch.student.name %> (head leader comisar for all user) <br>
+  <% unless leaders_already.include?(@final_group.pitch.student) %>
+    <input type="checkbox" name="leader" value="<%= @final_group.pitch.student.name %>" checked> <%= @final_group.pitch.student.name %> (head leader comisar for all user) <br>
+  <% end %>
   <% @students.each_with_index do |student, idx| %>
     <% unless is_group_leader?(student, @final_group.pitch)%>
       <input type="checkbox" name=<%= "group_members[member_#{idx}]" %> value=<%= student.id %>> <%= student.name %> | ranking: <%= find_ranking_two(student, @final_group.pitch) %><br>

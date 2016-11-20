@@ -6,6 +6,9 @@
       <p>Final Group Created</p>
     <% else %>
       <p><%= link_to 'Choose as final project', new_pitch_final_group_path(pitch)%></p>
+      <% if leaders_already.include?(pitch.student)%>
+        <em>Another pitch by this student has been chosen as a final project</em>
+      <% end %>
     <%end%>
   </ul>
 <% end %>
