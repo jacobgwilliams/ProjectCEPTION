@@ -10,4 +10,8 @@ module PitchesHelper
   def find_ranking(pitch_to_find)
     PitchRanking.where(student: current_user).where(pitch: pitch_to_find).pluck(:ranking).first
   end
+
+  def find_ranking_two(student_to_find, pitch_to_find)
+    PitchRanking.where(student: student_to_find).where(pitch: pitch_to_find).pluck(:ranking).first
+  end
 end

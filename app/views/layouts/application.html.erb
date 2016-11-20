@@ -13,8 +13,13 @@
     <nav>
       <li><%= link_to("Home", root_path)%></li>
         <% if logged_in? %>
-          <li><%=link_to("#{current_user.name}'s Dashboard", user_path(current_user.id))%></li>
+          <% if is_admin? %>
+            <li><%=link_to("#{current_user.name}'s Dashboard", user_path(current_user.id))%></li>
+          <% end %>
           <li><%= link_to "Logout", session_path(current_user), method: :delete%></li>
+          <% if FinalGroup.any? %>
+            <li><%= link_to "Final Groups!", final_groups_path%></li>
+          <% end %>
         <% else %>
           <li><%= link_to("Register", new_user_path)%></li>
           <li><%= link_to("Login", new_session_path )%></li>

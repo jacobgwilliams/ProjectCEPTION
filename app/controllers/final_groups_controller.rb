@@ -5,13 +5,21 @@ class FinalGroupsController < ApplicationController
   end
 
   def new
-    @final_group = FinalGroup.new(pitch_id: params[:id])
+    require_login
+    require_admin
+    @final_group = FinalGroup.new(pitch_id: params[:pitch_id])
+    @students = User.where(admin: false)
   end
 
-  def create
-  end
-
-  def show
+  def create_groups
+    require_login
+    require_admin
+    # @final_group = FinalGroup.new(pitch_id: params[:pitch_id])
+    params[:group_members].each do |useless_key, member_id|
+      FinalGroup.create(pitch_id: params[:pitch_id], student_id: member_id)
+    end
+    flash[:notice] = 'That was a great group you just created'
+    redirect_to current_user
   end
 
 end
