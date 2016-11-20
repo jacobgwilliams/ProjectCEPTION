@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    require_login
     require_admin
     @user = User.find_by(id: params[:id])
     if round_two?
