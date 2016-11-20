@@ -6,7 +6,9 @@
 <%= form_tag(pitch_create_groups_path(@final_group.pitch), method: "post") do %>
   <input type="checkbox" name="leader" value="<%= @final_group.pitch.student.name %>" checked> <%= @final_group.pitch.student.name %> (head leader comisar for all user) <br>
   <% @students.each_with_index do |student, idx| %>
-  <input type="checkbox" name=<%= "group_members[member_#{idx}]" %> value=<%= student.id %>> <%= student.name %> | ranking: <%= find_ranking_two(student, @final_group.pitch) %><br>
+    <% unless is_group_leader?(student, @final_group.pitch)%>
+      <input type="checkbox" name=<%= "group_members[member_#{idx}]" %> value=<%= student.id %>> <%= student.name %> | ranking: <%= find_ranking_two(student, @final_group.pitch) %><br>
+    <% end %>
   <% end %>
   <input type="submit" value="Submit">
 <% end %>
