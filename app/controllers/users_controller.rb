@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    require_not_logged_in
     @user = User.new
   end
 
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    require_login
     require_admin
     @user = User.find_by(id: params[:id])
     if round_two?
@@ -31,14 +33,14 @@ class UsersController < ApplicationController
 
     def key_validation
       if params[:user][:admin] == "1"
-        if params[:key] == SecretKey.first.admin_key
+        if params[:key] == SecretKey.last.admin_key #.last ensures the key is the most up to date key
           true
         else
           @user.errors.add(:key, "Invalid")
           false
         end
       else
-        if params[:key] == SecretKey.first.user_key
+        if params[:key] == SecretKey.last.user_key #same as above
           true
         else
           @user.errors.add(:key, "Invalid")

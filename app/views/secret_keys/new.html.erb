@@ -1,0 +1,12 @@
+<h2>Generate New Access Keys</h2>
+<p>Use the form to create access keys for login. Be sure to use unique keys for students and for admins, and be sure to remember them and send them out to their respective groups!</p>
+
+<%= form_for @secret_keys do |f| %>
+  <%= f.label :user_key %>:
+  <%= f.text_field :user_key %><br />
+
+  <%= f.label :admin_key %>:
+  <%= f.text_field :admin_key %><br />
+
+  <%= f.submit "Save Keys"%>
+<% end %>

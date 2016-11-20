@@ -38,10 +38,12 @@ class PitchesController < ApplicationController
   end
 
   def show
+    require_login
     @pitch = Pitch.find_by(id: params[:id])
   end
 
   def edit
+    require_login
     @pitch = Pitch.find_by(id: params[:id])
   end
 

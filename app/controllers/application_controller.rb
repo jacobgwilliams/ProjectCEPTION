@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     redirect_to '/sessions/new' unless logged_in?
   end
 
+  def require_not_logged_in
+    redirect_to '/' if logged_in?
+  end
+
   def is_admin?
     current_user && current_user.admin
   end
