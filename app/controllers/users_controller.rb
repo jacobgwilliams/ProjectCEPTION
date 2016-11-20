@@ -32,14 +32,14 @@ class UsersController < ApplicationController
 
     def key_validation
       if params[:user][:admin] == "1"
-        if params[:key] == SecretKey.first.admin_key
+        if params[:key] == SecretKey.last.admin_key #.last ensures the key is the most up to date key
           true
         else
           @user.errors.add(:key, "Invalid")
           false
         end
       else
-        if params[:key] == SecretKey.first.user_key
+        if params[:key] == SecretKey.last.user_key #same as above
           true
         else
           @user.errors.add(:key, "Invalid")
