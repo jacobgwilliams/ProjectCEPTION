@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin?
-    current_user.admin
+    current_user && current_user.admin
   end
 
   def require_admin

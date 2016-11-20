@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save && key_validation
+    if key_validation && @user.save
+      flash[:notice] = "Thank you for creating an account! Please login below."
       redirect_to '/'
     else
       render 'new'

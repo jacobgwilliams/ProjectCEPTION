@@ -1,0 +1,36 @@
+<% if @pitches.any? %>
+  <h2> Current Project Pitches: </h2>
+  <table>
+    <tr>
+      <th>Pitch</th>
+      <% if logged_in? && is_admin? %>
+      <th>Student</th>
+      <th>Vote Count</th>
+      <% else %>
+      <th>Your votes</th>
+      <% end %>
+    </tr>
+    <% @pitches.each do |pitch| %>
+    <tr>
+      <td><%= link_to pitch.title, pitch_path(pitch.id) %></td>
+      <% if logged_in? && is_admin? %>
+      <td><%= pitch.student.name %></td>
+      <td><%= pitch.votes.count %></td>
+      <% else %>
+      <td><% if has_already_voted?(pitch) %>
+            <%= 'X' %>
+          <% else %>
+          <%= '' %>
+          <% end %>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<br>
+<br>
+<% unless is_admin? %>
+<%= link_to 'Add New Pitch', new_pitch_path %>
+<% end %>
