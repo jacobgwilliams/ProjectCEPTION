@@ -45,6 +45,9 @@
 footer {
   padding-top: 100px;
   padding-bottom: 10px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
 
 .form-label {
@@ -57,3 +60,18 @@ footer {
   border-radius: 8px;
   height: 300px;
 }
+
+footer a:link {
+  text-decoration: none;
+  color: black;
+}
+
+/*  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }*/
