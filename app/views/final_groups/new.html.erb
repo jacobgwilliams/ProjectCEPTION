@@ -1,16 +1,25 @@
-<h2> Team Selection </h2>
-<h3>Project Name: <%= @final_group.pitch.title %></h3>
+<h3 class='center'> Team Selection </h3>
+<h4 class='center'>Project Name: <%= @final_group.pitch.title %></h4>
 <br>
-<h3> Select Members: </h3>
+<div class='container form-container'>
+  <h4> Select 4 Team Members (including leader): </h4>
 
-<%= form_tag(pitch_create_groups_path(@final_group.pitch), method: "post") do %>
-  <% unless leaders_already.include?(@final_group.pitch.student) %>
-    <input type="checkbox" name="leader" value="<%= @final_group.pitch.student.name %>" checked> <%= @final_group.pitch.student.name %> (head leader comisar for all user) <br>
-  <% end %>
-  <% @students.each_with_index do |student, idx| %>
-    <% unless is_group_leader?(student, @final_group.pitch)%>
-      <input type="checkbox" name=<%= "group_members[member_#{idx}]" %> value=<%= student.id %>> <%= student.name %> | ranking: <%= find_ranking_two(student, @final_group.pitch) %><br>
+  <form action='<%= "/pitches/#{@final_group.pitch.id}/create_groups" %>' method='post' >
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <% unless leaders_already.include?(@final_group.pitch.student) %>
+      <input id='leader' type="checkbox" name="leader" value="<%= @final_group.pitch.student.name %>" checked />
+      <label for="leader"><%= @final_group.pitch.student.name %> | (head leader comisar for all user) </label>
+      <br />
+
     <% end %>
-  <% end %>
-  <input type="submit" value="Submit">
-<% end %>
+    <% @students.each_with_index do |student, idx| %>
+      <% unless is_group_leader?(student, @final_group.pitch)%>
+      <input id=<%= "group_members[member_#{idx}]" %> type="checkbox" name= <%= "group_members[member_#{idx}]" %> value= <%= student.id %> />
+      <label for=<%= "group_members[member_#{idx}]" %>><%= "#{student.name} | ranking: #{ find_ranking_two(student, @final_group.pitch)}" %></label>
+      <br />
+      <% end %>
+    <% end %>
+    <br />
+    <input type="submit" value="Submit" class = "waves-effect waves-light btn #e65100 orange darken-4">
+  </form>
+</div>

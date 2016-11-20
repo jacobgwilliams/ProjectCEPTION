@@ -43,10 +43,17 @@
 }
 
 footer {
-  padding-top: 30px;
+  padding-top: 100px;
+  padding-bottom: 10px;
 }
 
 .form-label {
   font-size: 1.2em;
   color: black;
+}
+
+.group-card {
+  padding: 15px;
+  border-radius: 8px;
+  height: 300px;
 }
