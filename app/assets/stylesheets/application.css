@@ -14,7 +14,7 @@
  *= require_self
  */
 
- nav ul {
+/* nav ul {
      list-style-type: none;
      margin: 0;
      padding: 0;
@@ -22,9 +22,17 @@
  nav li {
      display: inline;
      width: 60px;
- }
+ }*/
 
 .error_message {
   color: red;
   font-size: 72px;
 }
+/*
+#toast-container {
+  top: auto !important;
+  right: auto !important;
+  bottom: 90%;
+  left: 50%;
+  position: relative;
+}*/

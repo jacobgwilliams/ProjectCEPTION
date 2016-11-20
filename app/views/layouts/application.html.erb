@@ -4,14 +4,18 @@
     <title>ProjectCEPTION</title>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
   </head>
 
   <body>
-    <h1>ProjectCEPTION</h1>
-    <nav>
-      <li><%= link_to("Home", root_path)%></li>
+    <nav class= "#00acc1 cyan darken-1">
+      <div class="nav-wrapper">
+      <%= link_to("ProjectCEPTION", root_path, html_options = {class: "brand-logo"})%>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if logged_in? %>
           <% if is_admin? %>
             <li><%=link_to("#{current_user.name}'s Dashboard", user_path(current_user.id))%></li>
@@ -24,9 +28,13 @@
           <li><%= link_to("Register", new_user_path)%></li>
           <li><%= link_to("Login", new_session_path )%></li>
         <% end %>
+      </ul>
+    </div>
     </nav>
     <% flash.each do |name, message| %>
-      <p><%= message %></p>
+      <script type="text/javascript">
+      Materialize.toast('<%= message %>', 5000, 'rounded')
+      </script>
     <% end %>
     <%= yield %>
   </body>
