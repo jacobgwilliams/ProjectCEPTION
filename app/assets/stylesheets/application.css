@@ -25,14 +25,15 @@
  }*/
 
 .error_message {
-  color: red;
-  font-size: 72px;
+  color: #800020;
+  font-size: 50px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
-/*
-#toast-container {
-  top: auto !important;
-  right: auto !important;
-  bottom: 90%;
-  left: 50%;
-  position: relative;
-}*/
+
+.form-container {
+  padding: 17px;
+  background-color: #e0f7fa;
+  border-radius: 8px;
+  box-shadow: 6px 6px 5px #888888;
+
+}

@@ -1,13 +1,14 @@
 <h1>New User Registration</h1>
 
 <% if @user.errors.any?  %>
-  <ul>
+  <ul class="animated swing error_message">
     <% @user.errors.full_messages.each do |error| %>
     <li><%= error %></li>
     <% end %>
   </ul>
 <% end  %>
 
+<div class="container form-container">
 <%= form_for @user do |f| %>
   <%= f.label :name %>:
   <%= f.text_field :name %><br />
@@ -21,8 +22,13 @@
   <%= label_tag "Key" %>:
   <%= text_field_tag "key" %><br />
 
-  <%= f.label :admin %>
-  <%= f.check_box :admin %><br />
+  <%= f.check_box :admin %>
+  <%= f.label :admin %><br />
 
-  <%= f.submit %>
+  <br>
+
+  <%= f.submit 'Create Account', :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
 <% end %>
+</div>
+
+
