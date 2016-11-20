@@ -1,36 +1,41 @@
 <% if @pitches.any? %>
-  <h2> Current Project Pitches: </h2>
-  <table>
-    <tr>
-      <th>Pitch</th>
-      <% if logged_in? && is_admin? %>
-      <th>Student</th>
-      <th>Vote Count</th>
-      <% else %>
-      <th>Your votes</th>
+  <h3 class='center'> Current Project Pitches: </h3>
+  <div class = 'container'>
+    <table class='responsive-table highlight bordered'>
+      <tr>
+        <th>Pitch</th>
+        <% if logged_in? && is_admin? %>
+        <th>Project Overlord</th>
+        <th>Vote Count</th>
+        <% else %>
+        <th>Your votes</th>
+        <% end %>
+      </tr>
+      <% @pitches.each do |pitch| %>
+      <tr>
+        <td><%= link_to pitch.title, pitch_path(pitch.id) %></td>
+        <% if logged_in? && is_admin? %>
+        <td><%= pitch.student.name %></td>
+        <td><%= pitch.votes.count %></td>
+        <% else %>
+        <td><% if has_already_voted?(pitch) %>
+              <%= "&#10008".html_safe %>
+            <% else %>
+            <%= '' %>
+            <% end %>
+        </td>
+        <% end %>
+      </tr>
       <% end %>
-    </tr>
-    <% @pitches.each do |pitch| %>
-    <tr>
-      <td><%= link_to pitch.title, pitch_path(pitch.id) %></td>
-      <% if logged_in? && is_admin? %>
-      <td><%= pitch.student.name %></td>
-      <td><%= pitch.votes.count %></td>
-      <% else %>
-      <td><% if has_already_voted?(pitch) %>
-            <%= 'X' %>
-          <% else %>
-          <%= '' %>
-          <% end %>
-      </td>
-      <% end %>
-    </tr>
-    <% end %>
-  </table>
-<% end %>
+    </table>
+  <% end %>
+  </div>
 
 <br>
 <br>
+
 <% unless is_admin? %>
-<%= link_to 'Add New Pitch', new_pitch_path %>
+  <div class='container center'>
+    <%= link_to 'Add New Pitch', new_pitch_path, html_options ={:class =>"waves-effect waves-light btn-large #1a237e indigo darken-4"} %>
+  </div>
 <% end %>

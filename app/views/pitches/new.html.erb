@@ -1,15 +1,15 @@
 <h2> Add New Pitch: </h2>
 
+<% if @pitch.errors.any? %>
+    <ul class="animated swing error_message">
+      <% @pitch.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<div class="container form-container">
 <%= form_for :pitch, url: {action: "create"} do |f| %>
-
-  <% if @pitch.errors.any? %>
-      <ul>
-        <% @pitch.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-  <% end %>
-
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -21,7 +21,8 @@
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Submit Pitch', :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
   </p>
 
 <% end %>
+</div>

@@ -1,9 +1,10 @@
 <h1>User Login</h1>
 
 <% if @error %>
-  <p class='error_message'><%= @error %></p>
+  <p class='animated swing error_message'><%= @error %></p>
 <% end  %>
 
+<div class="container form-container">
 <%= form_for(:session, url: sessions_path) do |f| %>
   <%= f.label :email %>:
   <%= f.text_field :email %><br />
@@ -11,5 +12,6 @@
   <%= f.label :password %>:
   <%= f.password_field :password %><br />
 
-  <%= f.submit "Login" %>
+  <%= f.submit 'Login', :class => "waves-effect waves-light btn #00acc1 cyan darken-1" %>
 <% end %>
+</div>

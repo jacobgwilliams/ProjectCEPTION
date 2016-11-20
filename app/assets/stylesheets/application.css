@@ -14,7 +14,7 @@
  *= require_self
  */
 
- nav ul {
+/* nav ul {
      list-style-type: none;
      margin: 0;
      padding: 0;
@@ -22,9 +22,31 @@
  nav li {
      display: inline;
      width: 60px;
- }
+ }*/
 
 .error_message {
-  color: red;
-  font-size: 72px;
+  color: #800020;
+  font-size: 50px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.form-container {
+  padding: 17px;
+  background-color: #e0f7fa;
+  border-radius: 8px;
+  box-shadow: 6px 6px 5px #888888;
+
+}
+
+.centered_button {
+  display:inline-block;
+}
+
+footer {
+  padding-top: 30px;
+}
+
+.form-label {
+  font-size: 1.2em;
+  color: black;
 }

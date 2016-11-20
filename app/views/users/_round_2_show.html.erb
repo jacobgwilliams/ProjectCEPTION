@@ -1,7 +1,8 @@
-<h3> Round 2 Pitches: </h3>
+<h3 class='center'> Round 2 Pitches: </h3>
+<div class = 'container'>
+  <ul class='collection'>
 <% @pitches.each_with_index do |pitch, i| %>
-  <ul>
-    <li><%= link_to pitch.title, pitch_path(pitch.id) %> by <%= pitch.student.name %> (Current Ranking: <%= i + 1 %> )</li>
+    <li class='collection-item-center'><%= link_to pitch.title, pitch_path(pitch.id) %> by <%= pitch.student.name %> (Current Ranking: <%= i + 1 %> )
     <% if final_project_cap_met %>
       <p>Voting is closed!<p>
     <% elsif final_group_created(pitch) %>
@@ -11,6 +12,8 @@
       <% if leaders_already.include?(pitch.student)%>
         <em>Another pitch by this student has been chosen as a final project</em>
       <% end %>
+    </li>
     <%end%>
+  <% end %>
   </ul>
-<% end %>
+
