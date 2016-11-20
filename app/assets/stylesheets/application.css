@@ -37,3 +37,16 @@
   box-shadow: 6px 6px 5px #888888;
 
 }
+
+.centered_button {
+  display:inline-block;
+}
+
+footer {
+  padding-top: 30px;
+}
+
+.form-label {
+  font-size: 1.2em;
+  color: black;
+}

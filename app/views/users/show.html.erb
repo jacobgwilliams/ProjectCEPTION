@@ -1,9 +1,11 @@
-<h2> Welcome to your dashboard, <%=@user.name %>! </h2>
+<h3 class='center'> Welcome to your dashboard, <%=@user.name %>! </h3>
 
 <% if !round_two? %>
   <%= render "round_1_show" %>
 <% else %>
   <%= render "round_2_show" %>
 <% end %>
-
-<%= link_to "Generate New Access Keys", new_secret_key_path %>
+<br>
+<div class='container center'>
+  <%= link_to "Generate New Access Keys", new_secret_key_path, html_options ={:class =>"waves-effect waves-light btn-large #e65100 orange darken-4"} %>
+</div>

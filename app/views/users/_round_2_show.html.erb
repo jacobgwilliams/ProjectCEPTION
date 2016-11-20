@@ -1,7 +1,9 @@
-<h3> Round 2 Pitches: </h3>
-<% @pitches.each_with_index do |pitch, i| %>
-  <ul>
-    <li><%= link_to pitch.title, pitch_path(pitch.id) %> by <%= pitch.student.name %> (Current Ranking: <%= i + 1 %> )</li>
-    <p><%= link_to 'Choose as final project', new_pitch_final_group_path(pitch)%></p>
+<h3 class='center'> Round 2 Pitches: </h3>
+<div class='container'>
+  <ul class='collection'>
+  <% @pitches.each_with_index do |pitch, i| %>
+      <li class='collection-item center'><%= link_to pitch.title, pitch_path(pitch.id) %> by <%= pitch.student.name %> (Current Ranking: <%= i + 1 %> )
+      <p><%= link_to 'Choose as final project', new_pitch_final_group_path(pitch)%></p>
+      </li>
+  <% end %>
   </ul>
-<% end %>

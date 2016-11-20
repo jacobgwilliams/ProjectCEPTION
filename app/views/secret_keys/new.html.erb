@@ -1,12 +1,14 @@
-<h2>Generate New Access Keys</h2>
-<p>Use the form to create access keys for login. Be sure to use unique keys for students and for admins, and be sure to remember them and send them out to their respective groups!</p>
+<h3 class="center">Generate New Access Keys</h3>
+<h5 class="center">Use the form to create access keys for login. Be sure to use unique keys for students and for admins, and be sure to remember them and send them out to their respective groups!</h5>
 
-<%= form_for @secret_keys do |f| %>
-  <%= f.label :user_key %>:
-  <%= f.text_field :user_key %><br />
+<div class="container form-container">
+  <%= form_for @secret_keys do |f| %>
+    <%= f.label :user_key %>:
+    <%= f.text_field :user_key %><br />
 
-  <%= f.label :admin_key %>:
-  <%= f.text_field :admin_key %><br />
+    <%= f.label :admin_key %>:
+    <%= f.text_field :admin_key %><br />
 
-  <%= f.submit "Save Keys"%>
-<% end %>
+    <%= f.submit "Save Keys", :class => "waves-effect waves-light btn #00acc1 cyan darken-1"%>
+  <% end %>
+</div>

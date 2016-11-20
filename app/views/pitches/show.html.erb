@@ -1,18 +1,20 @@
-<h2><%= @pitch.title %></h2>
-<% if logged_in? && is_admin?%>
-<p>Student: <%= @pitch.student.name%></p>
-<p>Current vote count: <%= @pitch.votes.count %></p>
-<% end %>
-<p><%= @pitch.body %> </p>
+<div style="text-align:center;" class= "container">
+  <h3>Pitch Title: <br> "<%= @pitch.title %>"</h3>
+  <% if logged_in? && is_admin?%>
+  <p>Student: <%= @pitch.student.name%></p>
+  <p>Current vote count: <%= @pitch.votes.count %></p>
+  <% end %>
+  <p><%= @pitch.body %> </p>
 
-<% if logged_in? && is_admin?%>
-<button>No voting for you, admin</button>
-<% elsif !has_already_voted?(@pitch)%>
-  <%= form_for :vote, url: pitch_votes_path(@pitch) do |f| %>
+  <% if logged_in? && is_admin?%>
+  <button class="btn-large disabled">No voting for you, admin</button>
+  <% elsif !has_already_voted?(@pitch)%>
+  <%= form_for :vote, :html => {:class => "centered_button"}, url: pitch_votes_path(@pitch) do |f| %>
     <p>
-      <%= f.submit "Vote for this pitch!" %>
+      <%= f.submit "Vote for this pitch!", :class =>"waves-effect waves-light btn-large #e65100 orange darken-4" %>
     </p>
   <% end %>
   <% else %>
-  <button>You already voted for this one!</button>
-<% end %>
+  <button class="btn-large disabled">You already voted for this one!</button>
+  <% end %>
+</div>

@@ -4,6 +4,8 @@ class PitchesController < ApplicationController
     require_login
     if is_admin?
       @pitches = Pitch.joins(:votes).group("pitches.id").order("count(votes.id) desc")
+      # doesn't show pitches unless they have a vote!!!
+      # @pitches << Pitch.where('votes = 0')
     else
       @pitches = Pitch.all
     end
