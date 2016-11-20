@@ -14,4 +14,14 @@ module PitchesHelper
   def find_ranking_two(student_to_find, pitch_to_find)
     PitchRanking.where(student: student_to_find).where(pitch: pitch_to_find).pluck(:ranking).first
   end
+
+  def final_group_created(pitch)
+    pitch.final_group
+  end
+
+  def final_group_protection
+    if final_group_created(Pitch.find_by(id: params[:pitch_id]))
+      redirect_to '/'
+    end
+  end
 end
