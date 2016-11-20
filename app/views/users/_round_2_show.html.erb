@@ -2,6 +2,6 @@
 <% @pitches.each do |pitch| %>
   <ul>
     <li><%= link_to pitch.title, pitch_path(pitch.id) %> by <%= pitch.student.name %> (Current Rating: )</li>
-    <p><%= link_to 'Choose as final project', new_final_group_path(pitch.id) %></p>
+    <p><%= link_to 'Choose as final project', new_pitch_final_group_path(pitch)%></p>
   </ul>
 <% end %>

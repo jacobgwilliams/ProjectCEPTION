@@ -5,7 +5,7 @@ class FinalGroupsController < ApplicationController
   end
 
   def new
-    @final_group = FinalGroup.new(pitch_id: params[:id])
+    @final_group = FinalGroup.new(pitch_id: params[:pitch_id])
   end
 
   def create

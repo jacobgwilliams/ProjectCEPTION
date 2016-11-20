@@ -16,8 +16,8 @@ class UsersController < ApplicationController
     require_admin
     @user = User.find_by(id: params[:id])
     if round_two?
-      @pitches = Pitch.where(advancing: true)
-      # sort by rating aggregate (sp?) total
+      advancing_pitches = Pitch.where(advancing: true)
+      @pitches = advancing_pitches.sort_by(&:total_ranking)
     else
       @pitches = Pitch.all.sort_by(&:vote_count).reverse
     end

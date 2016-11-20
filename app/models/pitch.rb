@@ -25,4 +25,8 @@ class Pitch < ApplicationRecord
     self.votes.count
   end
 
+  def total_ranking
+    self.pitch_rankings.sum(:ranking)
+  end
+
 end
