@@ -13,6 +13,7 @@
   </head>
 
   <body>
+    <header>
     <nav class= "#00acc1 cyan darken-1">
       <div class="nav-wrapper">
       <%= link_to("ProjectCEPTION", root_path, html_options = {class: "brand-logo"})%>
@@ -37,7 +38,10 @@
       Materialize.toast('<%= message %>', 5000, 'rounded')
       </script>
     <% end %>
+  </header>
+  <main>
     <%= yield %>
+  </main>
     <footer class='center page-footer #00acc1 cyan darken-1'>
       Coded by TeamCeption: <a href='https://www.github.com/jacobgwilliams'>Jacob Williams</a> &#8226; <a href='https://www.github.com/lindsaymkelly'>Lindsay Kelly</a> &#8226; <a href='https://www.github.com/mattcritelli'>Matt Critelli</a> &#8226; <a href='https://www.github.com/dixonscottr'>Scott Dixon</a>
     </footer>
