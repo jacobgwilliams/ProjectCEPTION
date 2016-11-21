@@ -2,7 +2,7 @@
 <div class = 'container'>
   <ul class='collection'>
 <% @pitches.each_with_index do |pitch, i| %>
-    <li class='collection-item-center'><%= link_to pitch.title, pitch_path(pitch.id) %> by <%= pitch.student.name %> (Current Ranking: <%= i + 1 %> )
+    <li class='collection-item center'><%= link_to pitch.title, pitch_path(pitch.id) %> by <%= pitch.student.name %> (Current Ranking: <%= i + 1 %> )
     <% if final_project_cap_met %>
       <p>Voting is closed!<p>
     <% elsif final_group_created(pitch) %>

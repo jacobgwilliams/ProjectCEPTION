@@ -1,27 +1,26 @@
-<h2> Final Groups : </h2>
-<% if @final_groups.empty? %>
-  <p> Final groups have not been chosen yet! Please remember to vote on pitches and come back when voting is closed! </p>
-<% else %>
-  <ul>
-  <% @final_groups.each do |group| %>
-    <li>
-      Project Title: <%= link_to group.pitch.title, pitch_path(group.pitch.id) %>
-    </li>
-    <li>
-      Group Leader: <%= group.leader.name %>
-    </li>
-    <li>
-      Group Members:
-      <ul>
-      <% group.pitch.final_group_members.each do |member| %>
-        <li><%= member.name %></li>
-      <% end %>
-      </ul>
-      <br>
-    </li>
+<h3 class='center'> Final Groups </h3>
+  <% if @final_groups.empty? %>
+    <p> Final groups have not been chosen yet! Please remember to vote on pitches and come back when voting is closed! </p>
+  <% else %>
+  <div class="container">
+    <div class="row center">
+    <% @final_groups.each do |group| %>
+        <div class="col s12 m4">
+          <div class="card #fffde7 yellow lighten-5 group-card hoverable">
+            <h5>Project Title: <br> <%= link_to group.pitch.title, pitch_path(group.pitch.id) %></h5>
+            <p><strong>Group Leader:</strong> <br> <%= group.leader.name %></p>
+            <p><strong>Group Members:</strong></p>
+            <ul>
+            <% group.pitch.final_group_members.each do |member| %>
+              <li><%= member.name %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+    <% end %>
+      </div>
+  </div>
   <% end %>
-  </ul>
-<% end %>
 
 
 
