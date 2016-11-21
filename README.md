@@ -1,14 +1,22 @@
 # ProjectCEPTION
 ## A tool for Dev Bootcamp teachers and students to use to pitch, vote on, select, and team up for final projects.
+### Deployed on [Heroku](https://projectception.herokuapp.com/)
 
 ## Created by:
-[Matt Critelli](https://www.github.com/mattcritelli)
-[Scott Dixon](https://www.github.com/dixonscottr)
-[Lindsay Kelly](https://www.github.com/lindsaymkelly)
-[Jacob Williams](https://www.github.com/jacobgwilliams)
+* [Matt Critelli](https://www.github.com/mattcritelli)
+* [Scott Dixon](https://www.github.com/dixonscottr)
+* [Lindsay Kelly](https://www.github.com/lindsaymkelly)
+* [Jacob Williams](https://www.github.com/jacobgwilliams)
 
 ## How to Use:
-TBD!
+1. Create an account as either a student or admin (be sure you have the secret key!)
+2. Students can publish pitches that other students can view and vote on.
+3. While voting commences, admins can track the most popular projects.
+4. Admins can then move five projects onto Round 2 from their dashboard.
+5. Once in Round 2, students can rank the 5 projects in order from 1-5 (most interested in working on to least interested)
+6. Admins can track how Round 2 projects are ranking and then select 3 for Final Projects as well as the students who will participate.
+7. When final groups are selected, students will have access to the Final Projects page which shows the projects that were picked, the leaders, and other group members. 
+8. Celebrate or mourn, respectively. 
 
 # The Nitty Gritty
 
